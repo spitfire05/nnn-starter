@@ -77,9 +77,11 @@
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "hm-bak";
             home-manager.extraSpecialArgs = { inherit inputs username; };
+            # niri-flake auto-imports its home modules (config + stylix) into
+            # every user when home-manager runs as a NixOS module, so we only
+            # add noctalia's here. Importing the niri ones again double-declares
+            # `programs.niri.finalConfig`.
             home-manager.sharedModules = [
-              niri.homeModules.config
-              niri.homeModules.stylix
               noctalia.homeModules.default
             ];
             home-manager.users.${username} = import ./modules/home;
