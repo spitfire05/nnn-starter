@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -15,11 +15,12 @@
     };
 
     # Modern-unix muscle memory: keep the old names, get the new tools.
+    # The lsd module also defines ls/ll/la, so force ours to win the merge.
     shellAliases = {
-      ls = "lsd";
-      ll = "lsd -l";
-      la = "lsd -la";
-      lt = "lsd --tree";
+      ls = lib.mkForce "lsd";
+      ll = lib.mkForce "lsd -l";
+      la = lib.mkForce "lsd -la";
+      lt = lib.mkForce "lsd --tree";
       cat = "bat";
       top = "btop";
       du = "dust";
