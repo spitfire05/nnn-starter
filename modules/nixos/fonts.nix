@@ -5,7 +5,7 @@
       maple-mono.NF # Maple Mono, patched with Nerd Font glyphs (mono default).
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
+      noto-fonts-color-emoji
     ];
 
     enableDefaultPackages = true;
