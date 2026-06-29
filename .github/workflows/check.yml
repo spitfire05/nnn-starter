@@ -1,0 +1,50 @@
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # The critical signal: evaluate every flake output (catches module-option
+  # typos and niri-settings schema errors) without building anything.
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: Evaluate flake (no build)
+        run: nix flake check --no-build --all-systems
+
+  # Style + hygiene. Kept separate so a formatting nit doesn't hide the eval
+  # result (and vice versa).
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: Formatting (alejandra)
+        run: nix run nixpkgs#alejandra -- --check .
+      - name: Lint (statix)
+        run: nix run nixpkgs#statix -- check .
+      - name: Dead code (deadnix)
+        run: nix run nixpkgs#deadnix -- --fail .
+
+  # Heavy job: actually realise the NixOS system (builds niri, noctalia, …).
+  # Slow, so it only runs on main / manual dispatch. Delete it if you don't want
+  # it — `eval` already guards against config breakage.
+  build:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: Build the NixOS system closure
+        run: |
+          nix build --print-build-logs \
+            '.#nixosConfigurations.nnn.config.system.build.toplevel'
