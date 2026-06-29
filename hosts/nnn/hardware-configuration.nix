@@ -5,8 +5,7 @@
 # It declares your disks, filesystems, kernel modules and CPU microcode. The
 # stub below only exists so the flake evaluates before you have real hardware
 # config; it will NOT boot a real machine as-is.
-{ lib, ... }:
-{
+{lib, ...}: {
   boot.initrd.availableKernelModules = [
     "xhci_pci"
     "ahci"
@@ -14,7 +13,7 @@
     "usbhid"
     "sd_mod"
   ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = ["kvm-intel"];
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/nixos";
@@ -26,7 +25,7 @@
     fsType = "vfat";
   };
 
-  swapDevices = [ ];
+  swapDevices = [];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

@@ -2,8 +2,7 @@
   pkgs,
   username,
   ...
-}:
-{
+}: {
   # ⇩ EDIT ME: the username comes from `username` in flake.nix. Change it there.
   users.users.${username} = {
     isNormalUser = true;

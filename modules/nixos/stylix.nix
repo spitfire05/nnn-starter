@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # One palette to rule them all. Stylix derives colors for niri, noctalia,
   # ghostty, bat, btop, neovim, GTK/Qt and more from a single base16 scheme.
   stylix = {
@@ -13,7 +12,7 @@
 
     # A subtle Kanagawa-toned gradient wallpaper, generated at build time so we
     # don't have to vendor a binary image. Drop in your own with a path here.
-    image = pkgs.runCommand "kanagawa-wallpaper.png" { nativeBuildInputs = [ pkgs.imagemagick ]; } ''
+    image = pkgs.runCommand "kanagawa-wallpaper.png" {nativeBuildInputs = [pkgs.imagemagick];} ''
       magick -size 3840x2160 gradient:'#16161D'-'#1F1F28' "$out"
     '';
 

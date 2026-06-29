@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   fonts = {
     packages = with pkgs; [
       maple-mono.NF # Maple Mono, patched with Nerd Font glyphs (mono default).
@@ -11,10 +10,10 @@
     enableDefaultPackages = true;
 
     fontconfig.defaultFonts = {
-      monospace = [ "Maple Mono NF" ];
-      sansSerif = [ "Noto Sans" ];
-      serif = [ "Noto Serif" ];
-      emoji = [ "Noto Color Emoji" ];
+      monospace = ["Maple Mono NF"];
+      sansSerif = ["Noto Sans"];
+      serif = ["Noto Serif"];
+      emoji = ["Noto Color Emoji"];
     };
   };
 }

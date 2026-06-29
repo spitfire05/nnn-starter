@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   # PipeWire is the modern audio stack; disable PulseAudio in favour of it.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;

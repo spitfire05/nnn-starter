@@ -2,8 +2,7 @@
   pkgs,
   username,
   ...
-}:
-{
+}: {
   # ── Tools with a home-manager program module ──────────────────────────────
   # Using programs.* (rather than raw packages) gets us shell integration and
   # Stylix theming for free.
@@ -32,7 +31,7 @@
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
-    options = [ "--cmd cd" ]; # `cd` becomes smart, keeps muscle memory.
+    options = ["--cmd cd"]; # `cd` becomes smart, keeps muscle memory.
   };
 
   programs.atuin = {

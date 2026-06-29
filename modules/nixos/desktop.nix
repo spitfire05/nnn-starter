@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # Polkit + a keyring so apps can request privileges and store secrets.
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;

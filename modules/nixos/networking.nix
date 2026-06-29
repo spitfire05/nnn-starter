@@ -1,11 +1,10 @@
-{ ... }:
-{
+{...}: {
   networking.networkmanager.enable = true;
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ ];
-    allowedUDPPorts = [ ];
+    allowedTCPPorts = [];
+    allowedUDPPorts = [];
   };
 
   # Faster name resolution / mDNS for `.local` hosts.

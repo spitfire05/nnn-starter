@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./boot.nix
     ./networking.nix
@@ -27,5 +26,5 @@
   # (allowUnfree + overlays are set in flake.nix where the inputs are in scope.)
 
   # A lean system-wide package set; everything user-facing lives in home-manager.
-  environment.systemPackages = [ ];
+  environment.systemPackages = [];
 }

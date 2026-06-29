@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # Enable niri from niri-flake. The module pulls in systemd units, polkit,
   # the screencast portal and sane session defaults.
   programs.niri.enable = true;
@@ -17,7 +16,7 @@
         "gnome"
         "gtk"
       ];
-      "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+      "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
     };
   };
 
