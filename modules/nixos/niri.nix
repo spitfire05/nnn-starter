@@ -32,7 +32,6 @@
     };
   };
 
-  # Let niri see the wallpaper/backlight; swaylock-style locker is provided by
-  # noctalia. swww gives an animated wallpaper daemon if you want one.
-  programs.light.enable = true;
+  # Brightness keys are handled by brightnessctl (installed in desktop.nix),
+  # which talks to logind and needs no extra privileges in a session.
 }
