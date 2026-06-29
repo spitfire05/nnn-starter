@@ -13,7 +13,7 @@
       nixd # nix LSP (alt, richer)
       pyright
       rust-analyzer
-      nodePackages.typescript-language-server
+      typescript-language-server
       stylua
       ripgrep
       fd
