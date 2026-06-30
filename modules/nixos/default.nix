@@ -3,6 +3,7 @@
     ./boot.nix
     ./networking.nix
     ./audio.nix
+    ./hardware.nix
     ./fonts.nix
     ./niri.nix
     ./noctalia.nix
