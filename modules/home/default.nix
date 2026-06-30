@@ -7,6 +7,7 @@
     ./ghostty.nix
     ./neovim.nix
     ./zed.nix
+    ./gtk.nix
     ./niri.nix
     ./noctalia.nix
     ./direnv.nix
