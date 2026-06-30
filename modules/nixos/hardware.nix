@@ -26,4 +26,13 @@
   # Thunderbolt / USB4 device authorization (docks, eGPUs, TB SSDs).
   # `boltctl` lists and authorizes devices.
   services.hardware.bolt.enable = true;
+
+  # Compressed RAM swap. Faster than the disk swap partition and saves NVMe
+  # wear; with 32 GB RAM the default (50% of RAM) is plenty of headroom.
+  # (Note: too small to hibernate 32 GB — that still needs a disk swap ≥ RAM.)
+  zramSwap.enable = true;
+
+  # Fingerprint reader (enroll with `fprintd-enroll`). Wires fingerprint auth
+  # into PAM for login/sudo via the libfprint stack.
+  services.fprintd.enable = true;
 }
