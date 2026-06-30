@@ -136,9 +136,10 @@ and PR:
 - **eval** — `nix flake check --no-build` evaluates the whole config (the fast,
   reliable signal: catches option typos and niri schema errors).
 - **lint** — `alejandra --check`, `statix`, `deadnix`.
-- **build** — realises the full system closure; slow (compiles niri/noctalia),
-  so it only runs on `main` / manual dispatch. Delete the job if you don't want
-  it.
+- **build** — realises the full system closure; runs on `main` / manual
+  dispatch. niri and noctalia are pulled prebuilt from their cachix caches
+  (`niri.cachix.org`, `noctalia.cachix.org`), so it finishes in minutes instead
+  of compiling C++/Rust from source. Delete the job if you don't want it.
 
 > **Commit a `flake.lock`.** Generate it once on a machine with Nix
 > (`nix flake lock`) and commit it, so CI and your machines resolve identical
@@ -152,5 +153,16 @@ and PR:
 - Multi-host: factor `hosts/` into one folder per machine and add more
   `nixosConfigurations` entries.
 
-Noctalia is pinned to the **v5 line** (its `main` branch; the old series lives on
-`legacy-v4`). Switch the input ref to a `v5.x.x` tag once one is published.
+### Binary caches (no source builds)
+
+niri and noctalia would otherwise compile from source (noctalia's C++ tree alone
+is ~an hour). To avoid that, the flake pins **noctalia to its `cachix` branch**
+— upstream force-pushes there only after a commit's package is built and pushed
+to `noctalia.cachix.org`, so `inputs.noctalia.packages.<sys>.default` is always a
+cache hit. It still tracks the **v5 line** (`main`), just slightly behind; the
+old series lives on `legacy-v4`. niri uses niri-flake's prebuilt
+`niri-stable` from `niri.cachix.org` for the same reason.
+
+The two caches are trusted in [`modules/nixos/default.nix`](modules/nixos/default.nix)
+so your machine pulls binaries too. Neither input may `follows` our `nixpkgs` —
+that would rebuild them against a different nixpkgs and miss the cache.
