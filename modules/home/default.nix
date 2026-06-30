@@ -6,6 +6,7 @@
     ./git.nix
     ./ghostty.nix
     ./neovim.nix
+    ./zed.nix
     ./niri.nix
     ./noctalia.nix
     ./direnv.nix
