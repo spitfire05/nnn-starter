@@ -43,6 +43,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # niri (Rust) and noctalia (C++) compile from source; the stock runner's
+      # ~14 GB free disk isn't enough. Reclaim the preinstalled toolchains
+      # (.NET, Android, GHC, …) for ~25-30 GB of headroom.
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
       - uses: DeterminateSystems/nix-installer-action@main
       - name: Build the NixOS system closure
         run: |
