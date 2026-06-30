@@ -74,11 +74,14 @@
       -- ── Plugins ───────────────────────────────────────────────────────────
       -- nvim-treesitter "main" branch: there is no more `.configs` module or
       -- `.setup{}`. Parsers are provided by Nix (withAllGrammars) and live on
-      -- the runtimepath, so we just start treesitter highlighting per buffer.
-      -- (Indentation stays on Neovim's smartindent, set above.)
+      -- the runtimepath, so we start treesitter per buffer. Where a parser is
+      -- available we also use treesitter-based indentation (experimental on the
+      -- main branch); other filetypes keep Neovim's smartindent, set above.
       vim.api.nvim_create_autocmd("FileType", {
-        callback = function()
-          pcall(vim.treesitter.start)
+        callback = function(args)
+          if pcall(vim.treesitter.start) then
+            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
         end,
       })
       require("gitsigns").setup()
@@ -118,16 +121,15 @@
         }),
       })
 
-      -- LSP
+      -- LSP (Neovim 0.11+ native API). nvim-lspconfig now only ships the server
+      -- definitions under lsp/ on the runtimepath; we set shared options for all
+      -- servers via the "*" config and enable the ones we want.
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require("lspconfig")
-      local servers = {
+      vim.lsp.config("*", { capabilities = capabilities })
+      vim.lsp.enable({
         "nil_ls", "lua_ls", "pyright", "rust_analyzer", "ts_ls", "gopls", "zls",
         "svelte", "html", "cssls", "jsonls", "eslint",
-      }
-      for _, server in ipairs(servers) do
-        lspconfig[server].setup({ capabilities = capabilities })
-      end
+      })
 
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
