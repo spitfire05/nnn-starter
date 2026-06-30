@@ -1,5 +1,9 @@
 # nnn-starter
 
+<p align="center">
+  <img src="themes/wallpaper.png" alt="Default wallpaper — a meditating pepe before Hokusai's Great Wave off Kanagawa (静心如海, &quot;static mind, like the sea&quot;)" width="100%">
+</p>
+
 > Three letters, zero compromise — now with batteries included.
 
 An opinionated [omarchy](https://omarchy.org)-style NixOS starter for the **NNN
