@@ -34,6 +34,8 @@
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+      # Its home-manager module reuses HM's firefox module, so share ours.
+      inputs.home-manager.follows = "home-manager";
     };
   };
 
