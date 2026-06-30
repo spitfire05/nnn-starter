@@ -35,22 +35,20 @@ jobs:
       - name: Dead code (deadnix)
         run: nix run nixpkgs#deadnix -- --fail .
 
-  # Heavy job: actually realise the NixOS system (builds niri, noctalia, …).
-  # Slow, so it only runs on main / manual dispatch. Delete it if you don't want
-  # it — `eval` already guards against config breakage.
+  # Realise the NixOS system. niri and noctalia come prebuilt from their cachix
+  # caches (configured below + in modules/nixos/default.nix), so this no longer
+  # compiles them from source. Runs on main / manual dispatch.
   build:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # niri (Rust) and noctalia (C++) compile from source; the stock runner's
-      # ~14 GB free disk isn't enough. Reclaim the preinstalled toolchains
-      # (.NET, Android, GHC, …) for ~25-30 GB of headroom.
-      - name: Free disk space
-        uses: jlumbroso/free-disk-space@main
-        with:
-          tool-cache: true
       - uses: DeterminateSystems/nix-installer-action@main
+        with:
+          # Download niri + noctalia as binaries instead of building them.
+          extra-conf: |
+            extra-substituters = https://niri.cachix.org https://noctalia.cachix.org
+            extra-trusted-public-keys = niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964= noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=
       - name: Build the NixOS system closure
         run: |
           nix build --print-build-logs \

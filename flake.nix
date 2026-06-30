@@ -10,15 +10,17 @@
     };
 
     # Scrollable-tiling Wayland compositor + NixOS/home-manager modules.
+    # Deliberately does NOT follow our nixpkgs, so niri-flake's prebuilt
+    # packages stay byte-identical to what niri.cachix.org has cached.
     niri.url = "github:sodiboo/niri-flake";
 
-    # Noctalia desktop shell. Pinned to the v5 line: upstream develops v5 on
-    # `main` and preserves the old series on the `legacy-v4` branch. Switch the
-    # ref to a `v5.x.x` tag once one is published.
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # Noctalia desktop shell (v5 line). Pinned to the `cachix` branch: upstream
+    # force-pushes there only after a commit's package is built and pushed to
+    # noctalia.cachix.org, so `packages.default` is guaranteed to be a cache hit
+    # (no ~hour-long C++ source build). It tracks `main` (v5), just slightly
+    # behind. Crucially we do NOT make it follow our nixpkgs — that would
+    # rebuild it against a different nixpkgs and miss the cache.
+    noctalia.url = "github:noctalia-dev/noctalia-shell/cachix";
 
     # System-wide base16 theming.
     stylix = {
