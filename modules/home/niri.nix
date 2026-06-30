@@ -34,8 +34,8 @@
       border.enable = false;
     };
 
-    # noctalia-shell is started as a systemd user service bound to the niri
-    # session (see modules/home/noctalia.nix), so no spawn-at-startup needed.
+    # noctalia is started as a systemd user service bound to the niri session
+    # (see modules/home/noctalia.nix), so no spawn-at-startup needed.
 
     # Subtle, fast animations — omarchy-style polish without distraction.
     animations.slowdown = 0.7;
@@ -45,12 +45,13 @@
     binds = {
       # Launchers
       "Mod+Return".action.spawn = "ghostty";
+      # Noctalia v5 IPC: `noctalia msg <command>` (the old `ipc call` form and
+      # the `noctalia-shell` binary are gone). The launcher is a named panel.
       "Mod+Space".action.spawn = [
-        "noctalia-shell"
-        "ipc"
-        "call"
+        "noctalia"
+        "msg"
+        "panel-toggle"
         "launcher"
-        "toggle"
       ];
       "Mod+B".action.spawn = "zen-beta"; # browser
       "Mod+E".action.spawn = "nautilus"; # file manager
