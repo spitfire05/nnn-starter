@@ -9,6 +9,7 @@
     ./niri.nix
     ./noctalia.nix
     ./direnv.nix
+    ./claude-code.nix
   ];
 
   home.username = username;
