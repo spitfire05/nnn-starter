@@ -17,7 +17,11 @@
   # Intel thermal management daemon — keeps temps/throttling sane under load.
   # Standard on Intel laptops; complements (does not conflict with) the
   # power-profiles-daemon used by the desktop.
+  #   ignoreCpuidCheck: newer Intel CPUs (e.g. Lunar Lake, family 6 model 0xbd)
+  #   aren't in thermald's built-in model table yet, so it would otherwise exit
+  #   with "Unsupported cpu model" at boot. Forces it to run with generic config.
   services.thermald.enable = true;
+  services.thermald.ignoreCpuidCheck = true;
 
   # Firmware updates via LVFS: `fwupdmgr refresh && fwupdmgr update` pulls
   # BIOS/EC/Thunderbolt updates. ThinkPads are well supported upstream.
