@@ -1,4 +1,9 @@
 {pkgs, ...}: {
+  # Let the official kanagawa.nvim plugin own neovim's colors instead of
+  # Stylix's base16 approximation (which paints fields/identifiers samuraiRed).
+  # Same palette, but with treesitter-aware, fine-grained highlights.
+  stylix.targets.neovim.enable = false;
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -30,6 +35,9 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
+      # Colorscheme (official kanagawa.nvim, same author as our base16 scheme).
+      kanagawa-nvim
+
       # Treesitter grammars precompiled by Nix (no runtime :TSInstall needed).
       nvim-treesitter.withAllGrammars
 
@@ -61,6 +69,11 @@
       -- ── Sane defaults ─────────────────────────────────────────────────────
       vim.g.mapleader = " "
       vim.g.maplocalleader = " "
+
+      -- ── Colorscheme ───────────────────────────────────────────────────────
+      require("kanagawa").setup()
+      vim.cmd.colorscheme("kanagawa")
+
       local o = vim.opt
       o.number = true
       o.relativenumber = true
