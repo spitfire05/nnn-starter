@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   # Zed — the GUI code editor. Neovim stays the terminal `$EDITOR`
   # (see modules/home/neovim.nix); Zed is what opens when you double-click a
   # text file in Nautilus or pick "open with default" from anywhere else.
@@ -49,4 +49,14 @@
       "application/xml" = zed;
     };
   };
+
+  # The zed-editor package only ships a `zeditor` binary; add a `zed` symlink
+  # so the obvious command works from a terminal (and from scripts/other tools,
+  # which a shell alias wouldn't cover).
+  home.packages = [
+    (pkgs.runCommandLocal "zed-cmd" {} ''
+      mkdir -p $out/bin
+      ln -s ${pkgs.zed-editor}/bin/zeditor $out/bin/zed
+    '')
+  ];
 }
