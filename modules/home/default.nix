@@ -13,6 +13,7 @@
     ./direnv.nix
     ./claude-code.nix
     ./apps.nix
+    ./media.nix
     ./discord.nix
   ];
 
