@@ -12,7 +12,10 @@
         natural-scroll = true;
         dwt = true; # disable-while-typing
       };
-      mouse.accel-profile = "flat";
+      mouse = {
+        accel-profile = "flat";
+        natural-scroll = true; # match macOS-style scrolling (also set on touchpad)
+      };
       focus-follows-mouse.enable = true;
     };
 
