@@ -10,8 +10,9 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   services.xserver.xkb = {
-    layout = "us";
+    layout = "us,ru";
     variant = "";
+    options = "grp:alt_shift_toggle"; # Alt+Shift switches US <-> Russian
   };
   console.keyMap = "us";
 
