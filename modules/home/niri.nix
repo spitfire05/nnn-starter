@@ -67,6 +67,35 @@
       }
     ];
 
+    window-rules = [
+
+      # Rounder corners to match Noctalia's style
+      {
+        geometry-corner-radius = {
+          bottom-left = 20.0;
+          bottom-right = 20.0;
+          top-left = 20.0;
+          top-right = 20.0;
+        };
+        clip-to-geometry = true;
+      }
+      
+      # Floating Noctalia settings window
+      {
+        matches = [
+          { app-id = "dev.noctalia.Noctalia"; }
+        ];
+        open-floating = true;
+        default-column-width = {
+          fixed = 1080;
+        };
+        default-window-height = {
+          fixed = 920;
+        };
+      }
+
+    ];
+
     # niri-flake's canonical attribute form: `action.<name> = <args>`. No-arg
     # actions take `{ }`; spawn takes a string or a list of argv strings.
     binds = {
