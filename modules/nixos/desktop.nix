@@ -28,4 +28,12 @@
     libnotify
     xdg-utils
   ];
+
+  # Steam does not have Home Manager module, so it needs to be enabled here
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+  };
 }

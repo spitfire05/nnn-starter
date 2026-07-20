@@ -28,6 +28,10 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    xwayland-satellite # XWayland support
+  ];
+
   # Minimal graphical login: tuigreet drops you straight into a niri session.
   # Flip `services.greetd.settings.default_session.user` to your username and
   # set `initial_session` instead of `default_session` to autologin.
