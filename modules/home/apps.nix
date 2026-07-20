@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   inputs,
   ...
@@ -38,6 +39,7 @@
     settings = {
       preset = 3;
       no_display = true;
+      font_size = lib.mkForce 24; # Forced because of confilct with stylix
       vram = true;
       ram = true;
       swap = true;
