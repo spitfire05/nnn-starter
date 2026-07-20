@@ -1,4 +1,4 @@
-{username, ...}: {
+{config, username, ...}: {
   imports = [
     ./cli.nix
     ./zsh.nix
@@ -24,4 +24,9 @@
   home.stateVersion = "25.05";
 
   programs.home-manager.enable = true;
+
+  # Custom symlink to external drive, for convinience:
+  home.file = {
+    dev.source = config.lib.file.mkOutOfStoreSymlink "/mnt/sda1";
+  };
 }
