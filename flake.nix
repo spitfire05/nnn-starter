@@ -66,7 +66,7 @@
     forAllSystems = nixpkgs.lib.genAttrs devSystems;
     pkgsFor = system: nixpkgs.legacyPackages.${system};
   in {
-    nixosConfigurations.nnn = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.michal-pc = nixpkgs.lib.nixosSystem {
       system = hostSystem;
       specialArgs = {inherit inputs username local;};
       modules = [

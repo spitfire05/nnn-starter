@@ -21,6 +21,7 @@
   programs.fd.enable = true;
   programs.zellij.enable = true;
   programs.jq.enable = true;
+  programs.helix.enable = true;
 
   programs.fzf = {
     enable = true;

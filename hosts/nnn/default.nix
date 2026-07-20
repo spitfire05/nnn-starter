@@ -10,11 +10,11 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   services.xserver.xkb = {
-    layout = "us,ru";
+    layout = "pl";
     variant = "";
-    options = "grp:alt_shift_toggle"; # Alt+Shift switches US <-> Russian
+    # options = "grp:alt_shift_toggle"; # Alt+Shift switches US <-> Russian
   };
-  console.keyMap = "us";
+  console.keyMap = "pl2";
 
   # The release this config was written against. Do NOT bump casually after
   # first install — read the NixOS release notes first.

@@ -7,8 +7,7 @@
 
     input = {
       keyboard.xkb = {
-        layout = "us,ru";
-        options = "grp:alt_shift_toggle"; # Alt+Shift switches US <-> Russian
+        layout = "pl";
       };
       # Each window remembers its own layout ("global" = one shared layout).
       keyboard.track-layout = "window";
@@ -45,10 +44,11 @@
       focus-ring = {
         enable = true;
         width = 2;
-        active.color = "#dcd7ba";
+        active.color = "#cba6f7"; # Catppuccin Mocha Mauve
         inactive.color = "#00000000";
       };
       border.enable = false;
+      background-color = "transparent";
     };
 
     # noctalia is started as a systemd user service bound to the niri session
@@ -56,6 +56,16 @@
 
     # Subtle, fast animations — omarchy-style polish without distraction.
     animations.slowdown = 0.7;
+
+    # Make the wallpaper stationary, rather than moving with workspaces.
+    layer-rules = [
+      {
+        matches = [
+          { namespace = "^noctalia-wallpaper$"; }
+        ];
+        place-within-backdrop = true;
+      }
+    ];
 
     # niri-flake's canonical attribute form: `action.<name> = <args>`. No-arg
     # actions take `{ }`; spawn takes a string or a list of argv strings.
@@ -81,16 +91,16 @@
       "Mod+V".action.toggle-window-floating = {};
 
       # Focus
-      "Mod+H".action.focus-column-left = {};
-      "Mod+L".action.focus-column-right = {};
-      "Mod+J".action.focus-window-down = {};
-      "Mod+K".action.focus-window-up = {};
+      "Mod+Left".action.focus-column-left = {};
+      "Mod+Right".action.focus-column-right = {};
+      "Mod+Down".action.focus-window-down = {};
+      "Mod+Up".action.focus-window-up = {};
 
       # Move
-      "Mod+Shift+H".action.move-column-left = {};
-      "Mod+Shift+L".action.move-column-right = {};
-      "Mod+Shift+J".action.move-window-down = {};
-      "Mod+Shift+K".action.move-window-up = {};
+      "Mod+Shift+Left".action.move-column-left = {};
+      "Mod+Shift+Right".action.move-column-right = {};
+      "Mod+Shift+Down".action.move-window-down = {};
+      "Mod+Shift+Up".action.move-window-up = {};
 
       # Sizing
       "Mod+R".action.switch-preset-column-width = {};
@@ -108,6 +118,8 @@
       "Mod+Shift+3".action.move-column-to-workspace = 3;
       "Mod+Shift+4".action.move-column-to-workspace = 4;
       "Mod+Shift+5".action.move-column-to-workspace = 5;
+
+      "Mod+O".action.toggle-overview = {};
 
       # Screenshots
       "Print".action.screenshot = {};

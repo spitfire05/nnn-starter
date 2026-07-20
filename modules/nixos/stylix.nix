@@ -8,7 +8,7 @@
     # Kanagawa, vendored in-repo so the build never depends on whatever version
     # of `base16-schemes` happens to be pinned. To use an upstream scheme
     # instead: stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
-    base16Scheme = ../../themes/kanagawa.yaml;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
     # "Static mind, like the sea" (静心如海) — a meditating pepe before Hokusai's
     # Great Wave off Kanagawa, vendored in-repo (pngquant-optimized).

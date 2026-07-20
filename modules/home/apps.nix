@@ -12,6 +12,8 @@
     # service enabled in modules/nixos/desktop.nix for trash + mounting, and
     # backs the browser's "open/save" file picker via the gtk xdg portal.
     pkgs.nautilus
+    pkgs._1password-cli
+    pkgs._1password-gui
   ];
 
   # Zen browser — Firefox-based, from the community flake (beta channel).
