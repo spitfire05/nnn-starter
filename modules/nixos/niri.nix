@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  username,
   ...
 }: {
   # Enable niri from niri-flake. The module pulls in systemd units, polkit,
@@ -32,6 +33,10 @@
   # set `initial_session` instead of `default_session` to autologin.
   services.greetd = {
     enable = true;
+    settings.initial_session = {
+      command = "niri-session";
+      user = username;
+    };
     settings.default_session = {
       command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
       user = "greeter";
