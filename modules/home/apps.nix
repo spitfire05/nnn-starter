@@ -33,5 +33,18 @@
   # `toolkit.legacyUserProfileCustomizations.stylesheets` pref for us.
   stylix.targets.zen-browser.profileNames = ["default"];
 
-  programs.mangohud.enable = true;
+  programs.mangohud = {
+    enable = true;
+    settings = {
+      preset = 3;
+      no_display = true;
+      vram = true;
+      ram = true;
+      swap = true;
+      displayserver = true;
+      wine = true;
+      winesync = true;
+      gamemode = true;
+    };
+  };
 }
