@@ -68,6 +68,24 @@
     nix-output-monitor # pretty build output (`nom`)
     alejandra # formatter
     devenv # per-project dev environments (`use devenv` in .envrc)
+
+    # Custom wrapper to run games with:
+    (writeShellScriptBin "gamerun" ''
+      ENV=(
+        "PROTON_DLSS_UPGRADE=1"
+        "PROTON_USE_NTSYNC=1"
+        "DXVK_ASYNC=1"
+        "PROTON_ENABLE_NVAPI=1"
+        "PROTON_ENABLE_WAYLAND=1"
+      )
+      
+      if [ $# -eq 0 ]; then
+        printf 'Usage: %s command [args...]\n' "''${0##*/}" >&2
+        exit 2
+      fi
+      
+      exec gamemoderun mangohud "''${ENV[@]}" "''$@"
+    '')
   ];
 
   # nh is a nicer frontend for nixos-rebuild + garbage collection. Point it at

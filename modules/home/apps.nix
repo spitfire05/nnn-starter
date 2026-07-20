@@ -32,4 +32,6 @@
   # userContent.css into the named profile and flips on the
   # `toolkit.legacyUserProfileCustomizations.stylesheets` pref for us.
   stylix.targets.zen-browser.profileNames = ["default"];
+
+  programs.mangohud.enable = true;
 }
