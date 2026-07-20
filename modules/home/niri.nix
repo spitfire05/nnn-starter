@@ -119,6 +119,8 @@
       "Mod+Shift+3".action.move-column-to-workspace = 3;
       "Mod+Shift+4".action.move-column-to-workspace = 4;
       "Mod+Shift+5".action.move-column-to-workspace = 5;
+      "Mod+Alt+Down".action.focus-workspace-down = {};
+      "Mod+Alt+Up".action.focus-workspace-up = {};
 
       "Mod+O".action.toggle-overview = {};
 
