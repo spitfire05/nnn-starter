@@ -18,4 +18,6 @@
     enable = true;
     nssmdns4 = true;
   };
+
+  services.tailscale.enable = true;
 }
