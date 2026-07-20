@@ -15,6 +15,8 @@
     pkgs.nautilus
     pkgs._1password-cli
     pkgs._1password-gui
+    pkgs.inkscape
+    pkgs.kdePackages.okular
   ];
 
   # Zen browser — Firefox-based, from the community flake (beta channel).
