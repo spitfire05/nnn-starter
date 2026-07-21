@@ -113,21 +113,6 @@ Everything is driven by one base16 file. Swap the palette and rebuild:
 stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
 ```
 
-## Per-project dev environments
-
-This starter deliberately keeps language toolchains **out** of the global
-system. Use direnv + flakes per project instead:
-
-```sh
-# in a project repo
-echo "use flake" > .envrc && direnv allow
-```
-
-```nix
-# that project's flake.nix devShell, e.g.
-devShells.default = pkgs.mkShell { packages = [ pkgs.nodejs pkgs.cargo ]; };
-```
-
 ## Verifying changes
 
 You can develop this on **macOS**, but a NixOS system can't be *built* there
