@@ -102,17 +102,6 @@
           ];
           home-manager.users.${username} = import ./modules/home;
 
-          fileSystems."/mnt/sda1" = {
-            device = "/dev/sda1";
-            fsType = "btrfs";
-            options = [ "ssd" "noatime" ];
-          };
-          
-          fileSystems."/mnt/sdb1" = {
-            device = "/dev/sdb1";
-            fsType = "btrfs";
-            options = [ "ssd" "noatime" ];
-          };
         }
       ];
     };

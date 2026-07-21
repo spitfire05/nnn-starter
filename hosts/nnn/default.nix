@@ -15,6 +15,18 @@
     # options = "grp:alt_shift_toggle"; # Alt+Shift switches US <-> Russian
   };
   console.keyMap = "pl2";
+  
+  # EDIT ME: edit external filesystems to match your system (if any)
+  fileSystems."/mnt/sda1" = {
+    device = "/dev/sda1";
+    fsType = "btrfs";
+    options = [ "ssd" "noatime" "nofail" ];
+  };
+  fileSystems."/mnt/sdb1" = {
+    device = "/dev/sdb1";
+    fsType = "btrfs";
+    options = [ "ssd" "noatime" "nofail" ];
+  };
 
   # The release this config was written against. Do NOT bump casually after
   # first install — read the NixOS release notes first.

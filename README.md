@@ -58,15 +58,16 @@ Your personal settings live in one place — [`local.nix`](local.nix). It's
 tracked with neutral defaults but marked `skip-worktree` (step 3) so your real
 values never get staged or committed.
 
-| What | Where |
-|------|-------|
-| **Username, hostname, full name** | [`local.nix`](local.nix) |
-| **Git identity** (name, email) | [`local.nix`](local.nix) |
-| **Timezone** | [`local.nix`](local.nix) |
-| **Monitor scale** | [`local.nix`](local.nix) |
-| **Hardware** | `hosts/nnn/hardware-configuration.nix` (generated, step 2 above) |
-| **Locale / keyboard layout** | [`hosts/nnn/default.nix`](hosts/nnn/default.nix) |
-| **Monitor name / position** | `outputs` in [`modules/home/niri.nix`](modules/home/niri.nix) |
+| What                              | Where                                                            |
+|------                             |-------                                                           |
+| **Username, hostname, full name** | [`local.nix`](local.nix)                                         |
+| **Git identity** (name, email)    | [`local.nix`](local.nix)                                         |
+| **Timezone**                      | [`local.nix`](local.nix)                                         |
+| **Monitor scale**                 | [`local.nix`](local.nix)                                         |
+| **Hardware**                      | `hosts/nnn/hardware-configuration.nix` (generated, step 2 above) |
+| **External storage** if any       | `hosts/nnn/default.nix`                                          |
+| **Locale / keyboard layout**      | [`hosts/nnn/default.nix`](hosts/nnn/default.nix)                 |
+| **Monitor name / position**       | `outputs` in [`modules/home/niri.nix`](modules/home/niri.nix)    |
 
 > Editing the defaults themselves (e.g. to change the placeholders this repo
 > ships) needs `git update-index --no-skip-worktree local.nix` first.
