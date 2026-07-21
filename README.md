@@ -4,27 +4,24 @@
   <img src="screenshot.png" alt="Screenshot of the NNN desktop — Niri + Noctalia on NixOS" width="100%">
 </p>
 
-> Three letters, zero compromise — now with batteries included.
+> My personal, opinionated **NNN** (NixOs + Niri + Noctalia) stack config. Based on [nnn-starter](https://github.com/floatdrop/nnn-starter).
 
-An opinionated [omarchy](https://omarchy.org)-style NixOS starter for the [**NNN
-stack**](https://the-nnn-stack.github.io/): **N**ixOS + **N**iri + **N**octalia. Clone it, set two placeholders,
-run one command, and get a cohesive, themed, developer-ready Wayland desktop.
+## What is included
 
-## What you get
-
-| Layer        | Choice |
-|--------------|--------|
-| Compositor   | [niri](https://github.com/YaLTeR/niri) (scrollable-tiling Wayland) via [niri-flake](https://github.com/sodiboo/niri-flake) |
-| Shell/UI     | [Noctalia](https://github.com/noctalia-dev/noctalia-shell) **v5** (bar, launcher, notifications, lock, control center) |
-| Theming      | [Stylix](https://github.com/nix-community/stylix) with the **Kanagawa** palette — one scheme themes everything |
-| Terminal     | [Ghostty](https://ghostty.org) |
-| Shell + prompt | Zsh + [Starship](https://starship.rs) (autosuggestions, syntax highlighting, fzf, zoxide) |
-| Editor (GUI) | [Zed](https://zed.dev) — themed via Stylix; default handler for text/source files |
-| Editor (terminal) | Neovim, preconfigured (LSP, treesitter, telescope, completion); the `$EDITOR` |
-| Browser      | [Zen](https://zen-browser.app) (beta channel, via the community flake) |
-| File manager | [Nautilus](https://apps.gnome.org/Nautilus/) (GNOME Files) |
-| Font         | Maple Mono NF |
-| Login        | greetd + tuigreet → niri session |
+| Layer             | Choice                                                                                                                     |
+|--------------     |--------                                                                                                                    |
+| Compositor        | [niri](https://github.com/YaLTeR/niri) (scrollable-tiling Wayland) via [niri-flake](https://github.com/epireyn/niri-flake) |
+| Shell/UI          | [Noctalia](https://github.com/noctalia-dev/noctalia-shell) **v5** (bar, launcher, notifications, lock, control center)     |
+| Theming           | [Stylix](https://github.com/nix-community/stylix) with the **Catppuccin Mocha** palette — one scheme themes everything     |
+| Terminal          | [Ghostty](https://ghostty.org)                                                                                             |
+| Shell + prompt    | Zsh + [Starship](https://starship.rs) (autosuggestions, syntax highlighting, fzf, zoxide)                                  |
+| Editor (GUI)      | [Zed](https://zed.dev) — themed via Stylix; default handler for text/source files                                          |
+| Editor (terminal) | [Helix](https://helix-editor.com/); the `$EDITOR`                                                                          |
+| Browser           | [Zen](https://zen-browser.app) (beta channel, via the community flake)                                                     |
+| File manager      | [Nautilus](https://apps.gnome.org/Nautilus/) (GNOME Files)                                                                 |
+| Font              | Jetbrains Mono NF                                                                                                          |
+| Login             | greetd + tuigreet → niri session (autologin, security achieved via root partition encryption, Omarchy-style)               |
+| Gaming            | Steam + Proton-GE + Gamemode + Mangohud                                                                                    |
 
 ### Modern command-line toolset
 `lsd` · `fzf` · `bat` · `btop` · `ripgrep` · `fd` · `zoxide` · `eza` · `yazi` ·
@@ -38,7 +35,7 @@ Old names are aliased to the new tools (`ls`→`lsd`, `cat`→`bat`,
 
 ```sh
 # 1. Get the repo onto your machine (or into the live NixOS installer).
-git clone https://github.com/<you>/nnn-starter ~/nnn-starter
+git clone https://github.com/spitfire05/nnn-starter ~/nnn-starter
 cd ~/nnn-starter
 
 # 2. Generate real hardware config for THIS machine.
@@ -82,7 +79,6 @@ local.nix              # your machine-local identity (skip-worktree)
 hosts/nnn/             # host: hardware + locale/timezone
 modules/nixos/         # system: boot, audio, niri, noctalia, stylix, users…
 modules/home/          # user: zsh, ghostty, neovim, niri keybinds, cli tools…
-themes/kanagawa.yaml   # vendored base16 palette (Stylix source of truth)
 ```
 
 ## Key bindings (niri)
@@ -109,10 +105,8 @@ Everything is driven by one base16 file. Swap the palette and rebuild:
 
 ```nix
 # modules/nixos/stylix.nix
-stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
 ```
-
-…or edit `themes/kanagawa.yaml` directly.
 
 ## Per-project dev environments
 
@@ -132,7 +126,7 @@ devShells.default = pkgs.mkShell { packages = [ pkgs.nodejs pkgs.cargo ]; };
 ## Verifying changes
 
 You can develop this on **macOS**, but a NixOS system can't be *built* there
-without a Linux builder — these all work locally as pure evaluation/lint:
+without a Linux builder — these all work local"ly as pure evaluation/lint:
 
 ```sh
 nix flake check                                              # evaluate everything
