@@ -3,23 +3,13 @@
   pkgs,
   ...
 }: {
-  # `nix-shell` / `nix-shell -p` hardcode bash. any-nix-shell re-execs zsh
+  # `nix-shell` / `nix-shell -p` hardcode bash. any-nix-shell re-execs fish
   # inside the ad-hoc environment so we keep our shell, aliases, and prompt.
   home.packages = [pkgs.any-nix-shell];
 
-  programs.zsh = {
+  programs.fish = {
     enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
-    history = {
-      size = 50000;
-      save = 50000;
-      ignoreDups = true;
-      ignoreSpace = true;
-      share = true;
-    };
+    generateCompletions = true;
 
     # Modern-unix muscle memory: keep the old names, get the new tools.
     # The lsd module also defines ls/ll/la, so force ours to win the merge.
@@ -44,13 +34,11 @@
       update = "nh os switch --update";
     };
 
-    initContent = ''
-      # Make Ctrl-arrow move by word.
-      bindkey "^[[1;5C" forward-word
-      bindkey "^[[1;5D" backward-word
-
-      # Keep zsh inside `nix-shell` instead of falling back to bash.
-      ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
+    interactiveShellInit = ''
+      set -g fish_greeting ""
+      
+      # Keep fish inside `nix-shell` instead of falling back to bash.
+      ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
     '';
   };
 }

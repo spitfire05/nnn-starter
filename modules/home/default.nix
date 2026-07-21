@@ -1,7 +1,7 @@
 {config, username, ...}: {
   imports = [
     ./cli.nix
-    ./zsh.nix
+    ./fish.nix
     ./starship.nix
     ./git.nix
     ./ghostty.nix
