@@ -5,7 +5,6 @@
     ./starship.nix
     ./git.nix
     ./ghostty.nix
-    ./neovim.nix
     ./zed.nix
     ./gtk.nix
     ./niri.nix
@@ -15,6 +14,7 @@
     ./apps.nix
     ./media.nix
     ./discord.nix
+    ./helix.nix
   ];
 
   home.username = username;

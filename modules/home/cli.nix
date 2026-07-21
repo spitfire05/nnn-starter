@@ -21,7 +21,6 @@
   programs.fd.enable = true;
   programs.zellij.enable = true;
   programs.jq.enable = true;
-  programs.helix.enable = true;
 
   programs.fzf = {
     enable = true;
@@ -68,6 +67,7 @@
     nix-output-monitor # pretty build output (`nom`)
     alejandra # formatter
     devenv # per-project dev environments (`use devenv` in .envrc)
+    nixd
 
     # Custom wrapper to run games with:
     (writeShellScriptBin "gamerun" ''
@@ -86,6 +86,8 @@
       
       exec gamemoderun mangohud "''${ENV[@]}" "''$@"
     '')
+
+    codebook
   ];
 
   # nh is a nicer frontend for nixos-rebuild + garbage collection. Point it at
