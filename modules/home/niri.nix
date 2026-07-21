@@ -48,7 +48,6 @@
         inactive.color = "#00000000";
       };
       border.enable = false;
-      background-color = "transparent";
     };
 
     # noctalia is started as a systemd user service bound to the niri session
@@ -61,7 +60,7 @@
     layer-rules = [
       {
         matches = [
-          { namespace = "^noctalia-wallpaper$"; }
+          { namespace = "^noctalia-backdrop"; }
         ];
         place-within-backdrop = true;
       }
