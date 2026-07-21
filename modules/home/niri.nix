@@ -151,6 +151,18 @@
       "Mod+Alt+Up".action.focus-workspace-up = {};
 
       "Mod+O".action.toggle-overview = {};
+      "Mod+L".action.spawn = [
+        "noctalia"
+        "msg"
+        "session"
+        "lock"
+      ];
+      "Mod+Ctrl+Shift+L".action.spawn = [
+        "noctalia"
+        "msg"
+        "session"
+        "lock-and-suspend"
+      ];
 
       # Screenshots
       "Print".action.screenshot = {};
