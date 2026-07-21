@@ -17,13 +17,13 @@
   console.keyMap = "pl2";
   
   # EDIT ME: edit external filesystems to match your system (if any)
-  fileSystems."/mnt/sda1" = {
-    device = "/dev/sda1";
+  fileSystems."/mnt/dev" = {
+    device = "/dev/disk/by-uuid/44017c53-9dae-4986-b882-e04018d5a878";
     fsType = "btrfs";
     options = [ "ssd" "noatime" "nofail" ];
   };
-  fileSystems."/mnt/sdb1" = {
-    device = "/dev/sdb1";
+  fileSystems."/mnt/games" = {
+    device = "/dev/disk/by-uuid/94e72055-1af0-4ef3-94bb-023077131a8f";
     fsType = "btrfs";
     options = [ "ssd" "noatime" "nofail" ];
   };

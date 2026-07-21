@@ -27,6 +27,6 @@
 
   # Custom symlink to external drive, for convinience:
   home.file = {
-    dev.source = config.lib.file.mkOutOfStoreSymlink "/mnt/sda1";
+    dev.source = config.lib.file.mkOutOfStoreSymlink "/mnt/dev";
   };
 }
