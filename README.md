@@ -90,14 +90,18 @@ modules/home/          # user: zsh, ghostty, neovim, niri keybinds, cli tools…
 | `Mod`+`B` | Browser (Zen) |
 | `Mod`+`E` | File manager (Nautilus) |
 | `Mod`+`Q` | Close window |
+| `Mod`+`O` | Toggle overview |
 | `Mod`+`F` / `Mod`+`Shift`+`F` | Maximize column / fullscreen |
 | `Mod`+`H`/`J`/`K`/`L` | Focus left/down/up/right |
 | `Mod`+`Shift`+`H`/`J`/`K`/`L` | Move window |
 | `Mod`+`1`…`5` | Switch workspace |
+| `Mod`+`Alt`+`Up` / `Down` | Switch workspace up / down |
 | `Mod`+`R` | Cycle column width |
 | `Print` | Screenshot |
 | `Mod`+`Shift`+`/` | Hotkey overlay (full list) |
 | `Mod`+`Shift`+`E` | Quit niri |
+| `Mod`+`L` | Lock session |
+| `Mod`+`Shift`+`Ctrl`+`L` | Lock session & suspend |
 
 ## Reskin it
 

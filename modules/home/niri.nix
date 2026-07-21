@@ -117,7 +117,6 @@
       "Mod+Shift+F".action.fullscreen-window = {};
       "Mod+W".action.toggle-column-tabbed-display = {};
       "Mod+V".action.toggle-window-floating = {};
-      "Mod+M".action.maximize-column = {};
 
       # Focus
       "Mod+Left".action.focus-column-left = {};
