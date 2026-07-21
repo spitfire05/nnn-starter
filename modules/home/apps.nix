@@ -17,6 +17,7 @@
     pkgs._1password-gui
     pkgs.inkscape
     pkgs.kdePackages.okular
+    pkgs.localsend
   ];
 
   # Zen browser — Firefox-based, from the community flake (beta channel).

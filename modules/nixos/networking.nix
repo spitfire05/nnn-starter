@@ -1,10 +1,14 @@
-{...}: {
+{local, ...}: {
   networking.networkmanager.enable = true;
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [];
-    allowedUDPPorts = [];
+    allowedTCPPorts = [
+      53317 # localsend
+    ];
+    allowedUDPPorts = [
+      53317 # localsend
+    ];
   };
 
   # Keep the clock correct over NTP. A skewed clock is the #1 cause of bogus
@@ -17,6 +21,18 @@
   services.avahi = {
     enable = true;
     nssmdns4 = true;
+  };
+
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      UseDns = true;
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+      AllowUsers = [ local.username ];
+    }
+    ;
   };
 
   services.tailscale.enable = true;
