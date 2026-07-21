@@ -41,4 +41,7 @@
 
   # A lean system-wide package set; everything user-facing lives in home-manager.
   environment.systemPackages = [];
+
+  environment.sessionVariables.MANROFFOPT = "-c";
+  environment.sessionVariables.MANPAGER = "sh -c 'col -bx | bat -l man -p'";
 }
