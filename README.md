@@ -14,7 +14,7 @@
 | Shell/UI          | [Noctalia](https://github.com/noctalia-dev/noctalia-shell) **v5** (bar, launcher, notifications, lock, control center)     |
 | Theming           | [Stylix](https://github.com/nix-community/stylix) with the **Catppuccin Mocha** palette — one scheme themes everything     |
 | Terminal          | [Ghostty](https://ghostty.org)                                                                                             |
-| Shell + prompt    | Zsh + [Starship](https://starship.rs) (autosuggestions, syntax highlighting, fzf, zoxide)                                  |
+| Shell + prompt    | Fish + [Starship](https://starship.rs) (autosuggestions, syntax highlighting, fzf, zoxide)                                  |
 | Editor (GUI)      | [Zed](https://zed.dev) — themed via Stylix; default handler for text/source files                                          |
 | Editor (terminal) | [Helix](https://helix-editor.com/); the `$EDITOR`                                                                          |
 | Browser           | [Zen](https://zen-browser.app) (beta channel, via the community flake)                                                     |
@@ -79,7 +79,7 @@ flake.nix              # inputs + the single `nixosConfigurations.nnn`
 local.nix              # your machine-local identity (skip-worktree)
 hosts/nnn/             # host: hardware + locale/timezone
 modules/nixos/         # system: boot, audio, niri, noctalia, stylix, users…
-modules/home/          # user: zsh, ghostty, neovim, niri keybinds, cli tools…
+modules/home/          # user: fish, ghostty, neovim, niri keybinds, cli tools…
 ```
 
 ## Key bindings (niri)
