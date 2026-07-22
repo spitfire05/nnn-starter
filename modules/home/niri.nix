@@ -21,6 +21,7 @@
         natural-scroll = true; # match macOS-style scrolling (also set on touchpad)
       };
       focus-follows-mouse.enable = true;
+      warp-mouse-to-focus = true;
     };
 
     # ⇩ EDIT ME: name your outputs (`niri msg outputs` lists them) for scale/pos.
@@ -56,6 +57,8 @@
     # Subtle, fast animations — omarchy-style polish without distraction.
     animations.slowdown = 0.7;
 
+    hotkey-overlay.skip-at-startup = true;
+    
     # Make the wallpaper stationary, rather than moving with workspaces.
     layer-rules = [
       {
