@@ -95,6 +95,6 @@
   # wherever you keep this flake checked out.
   programs.nh = {
     enable = true;
-    flake = "/home/${username}/nnn-starter";
+    flake = "/home/${username}/nixos-dotfiles";
   };
 }

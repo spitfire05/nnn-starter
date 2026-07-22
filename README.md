@@ -45,8 +45,8 @@ sudo nixos-generate-config --show-hardware-config > hosts/nnn/hardware-configura
 #    edits out of git history:
 git update-index --skip-worktree local.nix
 
-# 4. Build & switch.
-sudo nixos-rebuild switch --flake .#nnn
+# 4. Build & switch. Replace <HOSTNAME> with what is set in local.nix
+sudo nixos-rebuild switch --flake .#<HOSTANAME>
 ```
 
 After the first build, rebuild with `nh os switch` (aliased to `rebuild`) or
@@ -129,8 +129,8 @@ nix eval .#nixosConfigurations.nnn.config.system.build.toplevel.drvPath
 On a NixOS box (or with a remote/`linux-builder`) you can smoke-test in a VM:
 
 ```sh
-nixos-rebuild build-vm --flake .#nnn
-./result/bin/run-nnn-vm
+nixos-rebuild build-vm --flake .#<HOSTNAME>
+./result/bin/run-<HOSTNAME>-vm
 ```
 
 ### CI
