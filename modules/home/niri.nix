@@ -21,7 +21,7 @@
         natural-scroll = true; # match macOS-style scrolling (also set on touchpad)
       };
       focus-follows-mouse.enable = true;
-      warp-mouse-to-focus = true;
+      warp-mouse-to-focus.enable = true;
     };
 
     # ⇩ EDIT ME: name your outputs (`niri msg outputs` lists them) for scale/pos.

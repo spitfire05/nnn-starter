@@ -25,6 +25,9 @@
 
   programs.home-manager.enable = true;
 
+  # Required for stylix (?)
+  home.pointerCursor.enable = true;
+
   # Custom symlink to external drive, for convinience:
   home.file = {
     dev.source = config.lib.file.mkOutOfStoreSymlink "/mnt/dev";
